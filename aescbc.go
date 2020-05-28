@@ -25,6 +25,6 @@ func AESCBCdec(src []byte, key []byte, iv []byte, blkSize int) []byte {
 	ensrc := make([]byte, len(src))
 	mode := cipher.NewCBCDecrypter(blk, iv)
 	mode.CryptBlocks(ensrc, src)
-	rt := paddingworker.RemovePadding(ensrc)
+	rt := paddingworker.RemovePadding(ensrc, blkSize)
 	return rt
 }
